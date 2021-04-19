@@ -2,8 +2,8 @@ const listUrlPrefix = 'http://localhost:3000/'
 
   
   function showMonsters(page) {
-    const url = `${listUrlPrefix}` + `monsters/?_limit=50&_page=1` 
-    let page = 1
+    const url = `${listUrlPrefix}` + `monsters/?_limit=50&_page${page}` 
+    let page = 
     return fetch(url)
       .then(res=> res.json())
       .then(res => {
