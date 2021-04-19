@@ -105,7 +105,32 @@ const listUrlPrefix = 'http://localhost:3000/'
       document.querySelector("#monster-form").reset();
     }
     
+    function addNavListeners() {
+      let backBtn = document.querySelector("#back"),
+        forwardBtn = document.querySelector("#forward");
     
+      backBtn.addEventListener("click", () => {
+        prevPage();
+      });
+    
+      forwardBtn.addEventListener("click", () => {
+        nextPage();
+      });
+    }
+    
+    function nextPage() {
+      curPage++;
+      getMonsters(curPage).then(showMonsters);
+    }
+    
+    function prevPage() {
+      if (curPage < 1) {
+        alert("You're already on the first page");
+      } else {
+        curPage--;
+        getMonsters(curPage).then(showMonsters);
+      }
+    }
   
   window.addEventListener('DOMContentLoaded', function () {
     showMonsters();
